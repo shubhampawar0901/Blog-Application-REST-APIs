@@ -27,7 +27,7 @@ public class Post {
 	
 	@Id
 	@GeneratedValue( strategy= GenerationType.IDENTITY )
-	private Integer postID;
+	private Long postID;
 	
 	@NotNull
 	private String title;
