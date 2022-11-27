@@ -38,11 +38,10 @@ public class Post {
 	@NotNull
 	private String content;
 
-	@NotNull
-	@Column( name="upload-date")
+	@Column( name="uploadDate")
 	private LocalDateTime uploadDate;
-	
-	@Column( name="updated-date")
+
+	@Column( name="updatedDate")
 	private LocalDateTime updateDate;
 	
 
