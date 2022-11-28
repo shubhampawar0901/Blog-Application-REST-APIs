@@ -3,6 +3,7 @@ package com.masai.blogapp.service;
 import java.util.List;
 
 import com.masai.blogapp.DTO.PostDTO;
+import com.masai.blogapp.DTO.PostResponse;
 import com.masai.blogapp.exception.ResourceNotFoundException;
 
 
@@ -10,7 +11,7 @@ public interface PostService {
 	
 	PostDTO createPost(PostDTO postDTO);
 	
-	List<PostDTO> getAllPosts();
+	PostResponse getAllPosts(Integer pageSize, Integer pageNo, String sortBy, String sortMethod);
 	
 	PostDTO getPostByID(Long postID);
 	

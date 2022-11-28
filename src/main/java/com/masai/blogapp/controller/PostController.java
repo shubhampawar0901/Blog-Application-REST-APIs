@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.blogapp.DTO.PostDTO;
+import com.masai.blogapp.DTO.PostResponse;
 import com.masai.blogapp.service.impl.PostServiceImpl;
+import com.masai.blogapp.utils.PostConstant;
 
 @RestController
 @RequestMapping("/posts")
@@ -32,9 +34,13 @@ public class PostController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<PostDTO>> getAllPostsController(){
+	public ResponseEntity<PostResponse> getAllPostsController(
+			@RequestParam(value = "pageSize",    defaultValue= PostConstant.DEFAULT_PAGE_SIZE,   required = false) Integer pageSize,
+			@RequestParam(value = "pageNo" ,     defaultValue= PostConstant.DEFAULT_PAGE_NO, 	 required = false) Integer pageNo,
+			@RequestParam(value = "sortBy" ,     defaultValue= PostConstant.DEFAULT_SORT_METHOD, required = false) String sortBy,
+			@RequestParam(value = "sortMethod" , defaultValue= PostConstant.DEFAULT_SORT_DIR,    required = false) String sortMethod){
 		
-		return new ResponseEntity<List<PostDTO>> (postServiceImpl.getAllPosts(), HttpStatus.FOUND);
+		return new ResponseEntity<PostResponse> (postServiceImpl.getAllPosts(pageSize, pageNo, sortBy, sortMethod), HttpStatus.FOUND);
 	}
 	
 	@GetMapping("/{postID}")
